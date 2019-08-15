@@ -1,0 +1,62 @@
+<nav class="navbar navbar-pills navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <!------button为实现响应式布局，如果在手机上查看，点击button就可以弹出菜单---->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Mactavish</a><!---放log的地方-->
+        </div>
+
+        <!-- 当浏览器小于某个值时，点击button图标显示导航条的内容（注意这里的id与button 的id对应）-->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <!--具体菜单项-->
+            <ul class="nav navbar-nav">
+                <li {{if .activeHome}} class="active" {{end}}><a href="#">HOME<span class="sr-only">(current)</span></a></li><!--普通菜单-->
+               
+                <!--下拉菜单-->
+                <!-- <li class="dropdown">
+                    <a class="dropdown-toggle" href="#" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdowncolor" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">GIS</a></li>
+                        <li><a href="#">.NET基础</a></li>
+                        <li><a href="#">Asp .NET MVC</a></li>
+                        <li><a href="#">前端</a></li>
+                    </ul>
+                </li> -->
+
+                <li {{if .activeTags}} class="active" {{end}}><a href="#">TAGS</a></li>
+                <li {{if .activeAbout}} class="active" {{end}}><a href="#">ABOUT</a></li>
+
+            </ul>
+
+            <!--搜索表单-->
+            <!-- <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn navbar-btn">搜索</button>
+            </form> -->
+
+            <!--导航栏右部，一般的登录 注册-->
+            {{if .IsLogin}}
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">退出</a></li>
+            </ul>
+            {{else}}
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">登录</a></li>
+                <li><a href="#">注册</a></li>
+            </ul>
+            {{end}}
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!------------------------------------------导航条结束-------------------------------->
