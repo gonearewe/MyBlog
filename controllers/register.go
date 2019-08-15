@@ -15,10 +15,8 @@ type RegisterController struct {
 
 func (c *RegisterController) Get() {
 	c.TplName = "register.html"
-	fmt.Println("GET")  //DEBUG
 }
 func (c *RegisterController) Post() {
-	fmt.Println("POSt") //DEBUG
 	if c.GetString("password") != c.GetString("repassword") {
 		c.Data["json"] = map[string]interface{}{"code": 1, "message": "两次输入密码不一致"}
 		c.ServeJSON()
@@ -27,7 +25,7 @@ func (c *RegisterController) Post() {
 
 	newUser := new(models.User)
 	newUser.Username = c.GetString("username")
-	newUser.Password = utils.Md5(c.GetString("passname"))
+	newUser.Password = utils.Md5(c.GetString("password"))
 
 	if newUser.Exist() {
 		c.Data["json"] = map[string]interface{}{"code": 2, "message": "用户名已被占用"}
@@ -41,6 +39,7 @@ func (c *RegisterController) Post() {
 		fmt.Println(err)
 		c.Data["json"] = map[string]interface{}{"code": 3, "message": "注册失败"}
 	} else {
+		fmt.Println("User Register")
 		fmt.Println(newUser.GetByName())
 		c.Data["json"] = map[string]interface{}{"code": 0, "message": "注册成功"}
 	}
