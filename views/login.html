@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="static/css/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/lib/bootstrapValidator.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="static/js/lib/jquery-3.4.1.min.js"></script>
+    <script src="static/js/lib/jquery.form.min.js"></script> 
+    <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+    <script src="static/js/lib/bootstrap.min.js"></script>
+    <script src="static/js/lib/bootstrapValidator.min.js"></script>
+    <script src="static/js/validate.js"></script>
+    <title>登录</title>
+</head>
+
+<body>
+    <div class="container">
+        <form id="form-login" method="POST">
+            <div class="form-group">
+                <label for="">用户名</label>
+                <input type="text" class="form-control" name="username" id="login-username" 
+                    placeholder="请输入用户名">
+            </div>
+            <div class="form-group">
+                <label for="">密码</label>
+                <input type="text" class="form-control" name="password" id="login-password" 
+                    placeholder="请输入密码">
+            </div>
+            <div class="form-group">
+                <button type="submit" name="submit" class="btn btn-primary">登录</button>
+                <a href="/register">没有账号？现在注册</a>
+            </div>
+            </div>
+            
+
+        </form>
+    </div>
+</body>
+
+</html>
