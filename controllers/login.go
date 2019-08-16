@@ -12,7 +12,7 @@ type LoginController struct {
 }
 
 func (c *LoginController) Get() {
-	c.Data["title"] = "登录"
+	c.Data["title"] = "Log In"
 	c.TplName = "login.html"
 }
 
