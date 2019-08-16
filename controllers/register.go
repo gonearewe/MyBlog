@@ -14,7 +14,7 @@ type RegisterController struct {
 }
 
 func (c *RegisterController) Get() {
-	c.Data["title"] = "注册"
+	c.Data["title"] = "Register"
 	c.TplName = "register.html"
 }
 func (c *RegisterController) Post() {
