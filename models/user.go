@@ -5,7 +5,7 @@ import (
 
 type User struct{
 	Id int
-	Username string
+	Username string `orm:"unique"`
 	Password string
 	Createtime int64
 	Status bool
