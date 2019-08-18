@@ -1,14 +1,5 @@
 package controllers
 
-package controllers
-
-import (
-	"MyBlog/models"
-	"MyBlog/utils"
-	"fmt"
-	"github.com/astaxie/beego"
-)
-
 type ExitController struct {
 	BaseController
 }

@@ -1,0 +1,20 @@
+{{template "template/head.html" .}}
+    {{template "template/navbar.html" .}}
+    <div class="container">
+        {{range .articles}}
+        <div class="container">
+            <h3>{{.Title}}</h3>
+            <hr/>
+            <small>{{.Subtitle}}</small>
+            <small>posted by {{.Author}} on {{.Createtime}} </small>
+        </div>
+        {{end}}
+    </div>
+    <ul class="pagination pagination-lg">
+        <li class="page-item {{if .Pagination.HasPrevious}}{{else}}disabled{{end}}">
+            <a class="page-link" href="{{.Pagination.PreviousLink}} ">Previous</a></li>
+        <li class="page-item {{if .Pagination.HasPrevious}}{{else}}disabled{{end}}">
+            <a class="page-link" href="{{.Pagination.NextLink}}">Next</a></li>
+      </ul>
+</body>
+</html>
