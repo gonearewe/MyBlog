@@ -29,7 +29,7 @@ func (c *ArticleViewController) Get() {
 				fmt.Println(err)
 				c.Abort("404")
 			}else{
-				c.Data["article"]=articles //pass articles to template
+				c.Data["articles"]=articles //pass articles to template
 				
 				for _,i:=range articles{
 					fmt.Println(*i)

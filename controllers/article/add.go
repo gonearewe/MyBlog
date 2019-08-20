@@ -72,6 +72,8 @@ func (c *ArticleAddController) Post() {
 			return
 		}
 		path := beego.AppConfig.String("articlepath") + strconv.FormatInt(id,10) + ".md"
+		fmt.Println(beego.AppConfig.String("articlepath"))
+		fmt.Println(path)
 		c.SaveToFile("article", path)
 		c.Data["json"] = map[string]interface{}{"code": 0, "message": "文章上传成功", "article_id": id}
 		c.ServeJSON()

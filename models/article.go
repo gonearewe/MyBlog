@@ -11,7 +11,7 @@ type Article struct {
 	Subtitle string `orm:"null"`
 	Author   string
 	//	Tags       [5]string
-	//Text       string `orm:"type(text)"`
+	Text       string `orm:"-"`
 	Createtime int64
 	Status     bool
 }
@@ -24,10 +24,10 @@ type Pagination struct {
 func (u *Article) Insert() (Id int64, err error) {
 	return orm.NewOrm().Insert(u)
 }
-func (u *Article) GetByTitle() (*Article, error) {
+func (u *Article) GetById() (*Article, error) {
 	a := new(Article)
 
-	err := orm.NewOrm().QueryTable("article").Filter("Title", u.Title).One(a)
+	err := orm.NewOrm().QueryTable("article").Filter("Id", u.Id).One(a)
 	if err != nil {
 		return nil, err
 	}
@@ -41,6 +41,9 @@ func (u *Article) Delete() error {
 	_, err := o.Delete(u)
 	return err
 }
+//NOTICE : I originally set the type of "articles" as "*[]*Article" ,which is also accepted
+//by the orm function ,HOWEVER,error about reflect occurs, so I change the type to "[]*Article",
+//and then everything works just fine
 func ListArticleByPage(numPerPage, pageIndex int64) ([]*Article, error) {
 	var articles []*Article
 	if _, err := orm.NewOrm().QueryTable("article").OrderBy("-Createtime").
@@ -51,6 +54,7 @@ func ListArticleByPage(numPerPage, pageIndex int64) ([]*Article, error) {
 	}
 
 }
+//Get the total number of articles in the database
 func ArticleNum() (int64, error) {
 	return orm.NewOrm().QueryTable("article").Count()
 }

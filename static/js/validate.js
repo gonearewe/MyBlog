@@ -180,7 +180,7 @@ $('#form-article').bootstrapValidator({
     },
 },
 submitHandler: function (form) {
-  var urlStr = "/article_add";
+  var urlStr = "/article/add";
   var fd = new FormData();
   //fd.append('sealPicPathFile', $("#sealPicPathFile").val()); 不可以这样
 fd.append('article', $('#article')[0].files[0]);
