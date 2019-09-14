@@ -137,6 +137,80 @@ $(function () {
 }
 });
 
+
+
+//添加文章
+$('#form-article').bootstrapValidator({
+  message: 'This value is not valid',
+  submitButtons: 'button[type="submit"]',
+  feedbackIcons: {
+    valid: 'glyphicon glyphicon-ok',
+    invalid: 'glyphicon glyphicon-remove',
+    validating: 'glyphicon glyphicon-refresh'
+  },
+  live: 'enabled',
+  fields: {
+    title: {
+      message: '文章上传失败',
+      validators: {
+        notEmpty: {
+          message: '标题不能为空'
+        },
+        stringLength: {
+          min: 4,
+          max: 48,
+          message: '标题长度必须在4到48位之间'
+        },
+      }
+    },
+    tags: {
+      message: '文章上传失败',
+      validators: {
+        notEmpty: {
+          message: '标签不能为空'
+        },
+      }
+    },
+    article: {
+      message: '文章上传失败',
+      validators: {
+        notEmpty: {
+          message: '需要选择文件'
+        },
+      }
+    },
+},
+submitHandler: function (form) {
+  var urlStr = "/article/add";
+  var fd = new FormData();
+  //fd.append('sealPicPathFile', $("#sealPicPathFile").val()); 不可以这样
+fd.append('article', $('#article')[0].files[0]);
+fd.append('title', $("#title").val());
+fd.append('subtitle', $("#subtitle").val());
+fd.append('tags', $("#tags").val());
+
+$.ajax({
+  url:urlStr,
+  data: fd ,
+  type:'post',
+  dataType: 'json',
+  processData:false,  //tell jQuery not to process the data
+      contentType: false,  //tell jQuery not to set contentType
+  success:function(request){
+    console.log(JSON.stringify(request));
+    if(request.code == 0){
+      
+      alert("保存成功");
+
+      // $("#btnBack").click();
+    }else{
+       alert("保存失败，" + request.message);
+    }
+  }
+});
+}
+});
+
 // $('button').click(loginFun)
 // function loginFun()
 // {
