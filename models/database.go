@@ -27,7 +27,9 @@ func init() {
 	}
 	fmt.Println("连接数据库成功")
 
+
 	orm.RegisterModel(new(User),new(Article))
+
 
 	 // create table if not exist
 	orm.RunSyncdb("default", false, true)

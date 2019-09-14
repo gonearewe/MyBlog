@@ -1,6 +1,7 @@
 package utils
 
 import (
+
 	"bytes"
 	"crypto/md5"
 	"fmt"
@@ -8,12 +9,14 @@ import (
 	bf"github.com/russross/blackfriday"
 	"github.com/PuerkitoBio/goquery"
 	."github.com/sourcegraph/syntaxhighlight"
+
 )
 
 func Md5(source string) string {
 	checksum := md5.Sum([]byte(source))
 	return fmt.Sprintf("%x", checksum)
 }
+
 func MarkdownToHtml(text string) template.HTML {
 	content:=bf.MarkdownCommon([]byte(text))
 	doc,_:=goquery.NewDocumentFromReader(bytes.NewReader(content))
@@ -26,3 +29,4 @@ func MarkdownToHtml(text string) template.HTML {
 	htmlString,_:=doc.Html()
 	return template.HTML(htmlString)
 }
+

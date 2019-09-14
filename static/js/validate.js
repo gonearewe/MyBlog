@@ -138,6 +138,7 @@ $(function () {
 });
 
 
+
 //添加文章
 $('#form-article').bootstrapValidator({
   message: 'This value is not valid',
@@ -209,6 +210,7 @@ $.ajax({
 });
 }
 });
+
 // $('button').click(loginFun)
 // function loginFun()
 // {
